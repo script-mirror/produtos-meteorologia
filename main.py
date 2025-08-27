@@ -462,6 +462,15 @@ def main():
 
     args = parser.parse_args()
 
+    if args.sfc_prefix in (None, "", "null", "None"):
+        args.sfc_prefix = None
+
+    if args.pl_prefix in (None, "", "null", "None"):
+        args.pl_prefix = None
+
+    if args.produtos in (None, "", "null", "None"):
+        args.produtos = None
+
     # Produtos de sfc
     produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
         modelo=args.modelo_fmt,
