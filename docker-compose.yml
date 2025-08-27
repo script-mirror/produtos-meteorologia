@@ -8,3 +8,5 @@ services:
       data: ${data}
       hora: ${hora}
       resolucao: ${resolucao}
+    volumes:
+      - ./tmp:/app/tmp
