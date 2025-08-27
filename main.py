@@ -483,7 +483,7 @@ def main():
         produto_config_pl=produto_config_pl, 
         tp_params=open_model_params.get(args.modelo_fmt, {}).get('tp_params', {}), 
         pl_params=open_model_params.get(args.modelo_fmt, {}).get('pl_params', {}), 
-        shapefiles=['C:/Temp/shapefiles/Bacias_Hidrograficas_SIN.shp', 'C:/Temp/shapefiles/estados_2010.shp']
+        shapefiles=shapefiles
     )
 
     # dicionário mestre de produtos
