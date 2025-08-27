@@ -3,13 +3,6 @@ FROM python:3.13
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        gcc \
-        build-essential \
-        linux-headers-$(uname -r) \
-    && apt-get purge -y --auto-remove gcc build-essential linux-headers-$(uname -r) \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
         ffmpeg \
         tzdata \
         xvfb \
