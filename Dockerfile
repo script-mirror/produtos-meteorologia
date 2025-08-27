@@ -38,11 +38,14 @@ ENV modelo=""
 ENV data=""
 ENV hora=""
 ENV resolucao=""
+ENV produtos=""
+ENV sfc_prefix=""
+ENV pl_prefix=""
 
 ENTRYPOINT sh -c 'python main.py \
     --modelo_fmt "$modelo" \
     --data "$data" \
     --inicializacao "$hora" \
     --resolucao "$resolucao" \
-    --sfc-prefix sfc \
-    --pl-prefix pl'
+    --sfc-prefix "$sfc_prefix" \
+    --pl-prefix "$pl_prefix"'

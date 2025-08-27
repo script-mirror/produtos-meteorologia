@@ -16,3 +16,6 @@ services:
       - data=${data}
       - hora=${hora}
       - resolucao=${resolucao}
+      - produtos=${produtos}
+      - sfcprefix=${sfc_prefix}
+      - plprefix=${pl_prefix}
