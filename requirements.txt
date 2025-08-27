@@ -12,3 +12,4 @@ metpy
 regionmask
 pendulum
 cartopy
+Shapely==1.8.5.post1
