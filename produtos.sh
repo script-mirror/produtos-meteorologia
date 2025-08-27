@@ -1,6 +1,6 @@
 docker run --rm \
-  -v ./:/app \
-  -v ./tmp:/app/tmp \
+  -v /projetos/produtos-meteorologia:/app \
+  -v /projetos/produtos-meteorologia/tmp:/app/tmp \
   -v /home/admin/.env:/root/.env \
   -v /WX2TB/Documentos:/WX2TB/Documentos \
   -v /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia \
