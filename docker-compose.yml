@@ -8,7 +8,8 @@ services:
     volumes:
       - .:/app
       - ./tmp:/app/tmp
-      - ~/.env:/root/.env
+      - /home/admin/.env:/root/.env
+      - /WX2TB/Documentos:/WX2TB/Documentos
     environment:
       - modelo=${modelo}
       - data=${data}

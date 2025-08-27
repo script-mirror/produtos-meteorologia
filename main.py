@@ -12,8 +12,10 @@ from middle.meteorologia.consts.constants import CONSTANTES
 
 ###################################################################################################################
 
-shapefiles = ['/WX2TB/Documentos/fontes/tempo/novos_produtos/SHAPEFILES/Bacias_Hidrograficas_SIN.shp', 
-              '/WX2TB/Documentos/fontes/tempo/novos_produtos/SHAPEFILES/estados_2010.shp']
+shapefiles = [
+    '/WX2TB/Documentos/fontes/tempo/novos_produtos/SHAPEFILES/Bacias_Hidrograficas_SIN.shp', 
+    '/WX2TB/Documentos/fontes/tempo/novos_produtos/SHAPEFILES/estados_2010.shp',
+]
 
 ###################################################################################################################
 
