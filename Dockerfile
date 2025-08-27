@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gcc \
         build-essential \
         linux-headers-$(uname -r) \
-    && pip install --no-cache-dir -r /app/requirements.txt \
     && apt-get purge -y --auto-remove gcc build-essential linux-headers-$(uname -r) \
     && rm -rf /var/lib/apt/lists/*
 
