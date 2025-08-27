@@ -471,6 +471,8 @@ def main():
     if args.produtos in (None, "", "null", "None"):
         args.produtos = None
 
+    print(args)
+
     # Produtos de sfc
     produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
         modelo=args.modelo_fmt,
