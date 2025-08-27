@@ -532,37 +532,3 @@ if __name__ == "__main__":
     execution_time = end_time - start_time
     print(f"Tempo de execução: {execution_time/60} minutos")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

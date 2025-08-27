@@ -3,15 +3,14 @@ services:
     build:
       context: .
       args:
-        modelo: ${modelo}
-        data: ${data}
-        hora: ${hora}
-        resolucao: ${resolucao}
         GIT_USERNAME: ${git_username}
         GIT_TOKEN: ${git_token}
     volumes:
       - .:/app
       - ./tmp:/app/tmp
       - ~/.env:/root/.env
-    
-
+    environment:
+      - modelo=${modelo}
+      - data=${data}
+      - hora=${hora}
+      - resolucao=${resolucao}
