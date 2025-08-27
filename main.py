@@ -471,6 +471,10 @@ def main():
     if args.produtos in (None, [""], "null", "None"):
         args.produtos = None
 
+    # Corrige caso tenha um único item com espaços
+    if len(args.produtos) == 1 and " " in args.produtos[0]:
+        args.produtos = args.produtos[0].split()
+
     print(args)
 
     # Produtos de sfc
