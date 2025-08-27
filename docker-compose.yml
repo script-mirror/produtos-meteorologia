@@ -3,10 +3,10 @@ services:
     build: .
     volumes:
       - .:/app
+      - ./tmp:/app/tmp
     args:
       modelo: ${modelo}
       data: ${data}
       hora: ${hora}
       resolucao: ${resolucao}
-    volumes:
-      - ./tmp:/app/tmp
+
