@@ -16,6 +16,6 @@ services:
       - data=${data}
       - hora=${hora}
       - resolucao=${resolucao}
-      - produtos=null
-      - sfcprefix=null
-      - plprefix=null
+      - produtos
+      - sfcprefix
+      - plprefix
