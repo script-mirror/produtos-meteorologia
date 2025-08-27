@@ -468,7 +468,7 @@ def main():
     if args.pl_prefix in (None, "", "null", "None"):
         args.pl_prefix = None
 
-    if args.produtos in (None, "", "null", "None"):
+    if args.produtos in (None, [""], "null", "None"):
         args.produtos = None
 
     print(args)
