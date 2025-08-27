@@ -10,6 +10,7 @@ services:
       - ./tmp:/app/tmp
       - /home/admin/.env:/root/.env
       - /WX2TB/Documentos:/WX2TB/Documentos
+      - /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia
     environment:
       - modelo=${modelo}
       - data=${data}
