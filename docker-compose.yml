@@ -17,5 +17,5 @@ services:
       - hora=${hora}
       - resolucao=${resolucao}
       - produtos=${produtos}
-      - sfcprefix=${sfc_prefix}
-      - plprefix=${pl_prefix}
+      - sfcprefix=${sfcprefix}
+      - plprefix=${plprefix}
