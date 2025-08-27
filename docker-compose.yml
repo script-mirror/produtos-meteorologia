@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    args:
+      modelo: ${modelo}
+      data: ${data}
+      hora: ${hora}
+      resolucao: ${resolucao}
