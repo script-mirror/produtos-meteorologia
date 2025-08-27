@@ -1,12 +1,14 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        modelo: ${modelo}
+        data: ${data}
+        hora: ${hora}
+        resolucao: ${resolucao}
     volumes:
       - .:/app
       - ./tmp:/app/tmp
-    args:
-      modelo: ${modelo}
-      data: ${data}
-      hora: ${hora}
-      resolucao: ${resolucao}
+    
 
