@@ -1,3 +1,5 @@
+source .env
+
 docker build \
   --build-arg GIT_USERNAME=$git_username \
   --build-arg GIT_TOKEN=$git_token \

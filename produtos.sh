@@ -1,5 +1,5 @@
 docker run --rm \
-  -v .:/app \
+  -v ./:/app \
   -v ./tmp:/app/tmp \
   -v /home/admin/.env:/root/.env \
   -v /WX2TB/Documentos:/WX2TB/Documentos \
