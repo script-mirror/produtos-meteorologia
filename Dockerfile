@@ -48,4 +48,6 @@ ENTRYPOINT sh -c 'python main.py \
     --inicializacao "$hora" \
     --resolucao "$resolucao" \
     --sfc-prefix "$sfc_prefix" \
-    --pl-prefix "$pl_prefix"'
+    --pl-prefix "$pl_prefix" \
+    --produtos "$produtos" \
+    '
