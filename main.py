@@ -444,11 +444,11 @@ def main():
     parser = argparse.ArgumentParser(description="Processa inicialização de modelo meteorológico.")
 
     # obrigatórios
-    parser.add_argument("modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
-    parser.add_argument("data", help="Data no formato YYYY-MM-DD")
+    parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
+    parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
 
-    parser.add_argument("inicializacao", help="Hora da inicialização (ex: 0, 12)")
-    parser.add_argument("resolucao", help="Resolução do modelo (ex: 0p50, 1p00)")
+    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)")
+    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)")
 
     # opcionais
     parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")

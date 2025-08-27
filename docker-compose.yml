@@ -12,5 +12,6 @@ services:
     volumes:
       - .:/app
       - ./tmp:/app/tmp
+      - ~/.env:/root/.env
     
 
