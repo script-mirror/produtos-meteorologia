@@ -4,6 +4,13 @@ WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
 
+ARG GIT_USERNAME
+ARG GIT_TOKEN
+ARG modelo
+ARG data
+ARG hora
+ARG resolucao
+
 RUN sed -i "s/\${GIT_USERNAME}/${GIT_USERNAME}/g" requirements.txt && \
     sed -i "s/\${GIT_TOKEN}/${GIT_TOKEN}/g" requirements.txt
 
@@ -15,9 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
-ARG modelo
-ARG data
-ARG hora
-ARG resolucao
+
 
 CMD ["python", "main.py", "${modelo}", "${data}", "${hora}", "${resolucao}", "--sfc-prefix", "sfc", "--pl-prefix", "pl"]
