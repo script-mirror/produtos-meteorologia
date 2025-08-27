@@ -2,6 +2,31 @@ FROM python:3.13
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        gcc \
+        build-essential \
+        linux-headers-$(uname -r) \
+    && pip install --no-cache-dir -r /app/requirements.txt \
+    && apt-get purge -y --auto-remove gcc build-essential linux-headers-$(uname -r) \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ffmpeg \
+        tzdata \
+        xvfb \
+        locales \
+    && ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime \
+    && echo "America/Sao_Paulo" > /etc/timezone \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN sed -i 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+
+ENV LANG=pt_BR.UTF-8 \
+    LC_ALL=pt_BR.UTF-8 \
+    TZ=America/Sao_Paulo
+
+
 COPY ./requirements.txt /app/requirements.txt
 
 ARG GIT_USERNAME
