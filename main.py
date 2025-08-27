@@ -12,7 +12,8 @@ from middle.meteorologia.consts.constants import CONSTANTES
 
 ###################################################################################################################
 
-shapefiles = ['C:/Temp/shapefiles/Bacias_Hidrograficas_SIN.shp', 'C:/Temp/shapefiles/estados_2010.shp']
+# shapefiles = ['C:/Temp/shapefiles/Bacias_Hidrograficas_SIN.shp', 'C:/Temp/shapefiles/estados_2010.shp']
+shapefiles = []
 
 ###################################################################################################################
 
