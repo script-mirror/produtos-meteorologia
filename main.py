@@ -554,6 +554,7 @@ def main():
         # Configuração do produto
         produtos = GeraProdutosObservacao(
             produto_config=produto_config,
+            shapefiles=shapefiles,
         )
 
         # dicionário mestre de produtos
