@@ -431,9 +431,6 @@ def map_produtos(produtos=None, tipo='forecast'):
             "prec24h": produtos.gerar_prec24h(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "acumulado_mensal": lambda: produtos.gerar_acumulado_mensal(extent=CONSTANTES['extents_mapa']['brasil']),
             "dif_prev": lambda: produtos.gerar_dif_prev(tipo_plot='tp_db'),
-            "temp_diario": lambda: produtos.gerar_desvpad(),
-            "temp_mensal": lambda: produtos.gerar_desvpad(),
-            "txt_cidades": lambda: produtos.gerar_desvpad(),
         }
 
 ###################################################################################################################
