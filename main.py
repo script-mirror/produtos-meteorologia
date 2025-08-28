@@ -551,7 +551,7 @@ def main():
             data=args.data,
         )
 
-        produto_config.download_files_models()
+        produto_config.download_files()
 
         # Configuração do produto
         produtos = GeraProdutosObservacao(
