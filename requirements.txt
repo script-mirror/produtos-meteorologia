@@ -16,3 +16,4 @@ Cartopy==0.24.1
 Shapely==1.8.5.post1
 fiona==1.9.6
 dask
+ecmwf-opendata
