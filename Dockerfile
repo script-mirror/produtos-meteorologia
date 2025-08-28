@@ -41,6 +41,7 @@ ENV resolucao=""
 ENV produtos=""
 ENV sfcprefix=""
 ENV plprefix=""
+ENV PYTHONUNBUFFERED=1
 
 ENTRYPOINT sh -c 'python main.py \
     --modelo_fmt "$modelo" \
