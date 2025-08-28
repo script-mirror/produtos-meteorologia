@@ -7,9 +7,9 @@ hora=$3
 resolucao=$4
 
 # Argumentos opcionais
-produtos=$5
-sfcprefix=$6
-plprefix=$7
+sfcprefix=$5
+plprefix=$6
+produtos=$7
 
 cmd="docker run --rm \
   -v /projetos/produtos-meteorologia:/app \
