@@ -5,8 +5,8 @@ import argparse
 start_time = time.time()
 
 # Importando o módulo principal
-from middle.meteorologia.processamento.produtos import ConfigProdutosPrevisaoCurtoPrazo
-from middle.meteorologia.processamento.produtos import GeraProdutosPrevisao
+from middle.meteorologia.processamento.produtos import ConfigProdutosPrevisaoCurtoPrazo, ConfigProdutosObservado
+from middle.meteorologia.processamento.produtos import GeraProdutosPrevisao, GeraProdutosObservacao
 from middle.meteorologia.processamento.pipelines import pipelines
 from middle.meteorologia.consts.constants import CONSTANTES
 
@@ -477,53 +477,87 @@ def main():
             args.produtos = args.produtos[0].split()
 
     print(args)
+   
+    modelos_observados = ['merge', 'samet']
 
-    # Produtos de sfc
-    produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
-        modelo=args.modelo_fmt,
-        inicializacao=args.inicializacao,
-        data=args.data,
-        resolucao=args.resolucao,
-        name_prefix=args.sfc_prefix if args.sfc_prefix else None
-    )
+    if args.modelo_fmt not in modelos_observados:
 
-    # Produtos de pl
-    produto_config_pl = ConfigProdutosPrevisaoCurtoPrazo(
-        modelo=args.modelo_fmt,
-        inicializacao=args.inicializacao,
-        data=args.data,
-        resolucao=args.resolucao,
-        name_prefix=args.pl_prefix if args.pl_prefix else None
-    )
+        # Produtos de sfc
+        produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
+            modelo=args.modelo_fmt,
+            inicializacao=args.inicializacao,
+            data=args.data,
+            resolucao=args.resolucao,
+            name_prefix=args.sfc_prefix if args.sfc_prefix else None
+        )
 
-    # Configuração do produto
-    produtos = GeraProdutosPrevisao(
-        produto_config_sf=produto_config_sf, 
-        produto_config_pl=produto_config_pl, 
-        tp_params=open_model_params.get(args.modelo_fmt, {}).get('tp_params', {}), 
-        pl_params=open_model_params.get(args.modelo_fmt, {}).get('pl_params', {}), 
-        shapefiles=shapefiles
-    )
+        # Produtos de pl
+        produto_config_pl = ConfigProdutosPrevisaoCurtoPrazo(
+            modelo=args.modelo_fmt,
+            inicializacao=args.inicializacao,
+            data=args.data,
+            resolucao=args.resolucao,
+            name_prefix=args.pl_prefix if args.pl_prefix else None
+        )
 
-    # dicionário mestre de produtos
-    mapa = map_produtos(produtos)
+        # Configuração do produto
+        produtos = GeraProdutosPrevisao(
+            produto_config_sf=produto_config_sf, 
+            produto_config_pl=produto_config_pl, 
+            tp_params=open_model_params.get(args.modelo_fmt, {}).get('tp_params', {}), 
+            pl_params=open_model_params.get(args.modelo_fmt, {}).get('pl_params', {}), 
+            shapefiles=shapefiles
+        )
 
-    for variavel in [args.sfc_prefix, args.pl_prefix]:
+        # dicionário mestre de produtos
+        mapa = map_produtos(produtos)
 
-        if variavel is None:
-            continue
+        for variavel in [args.sfc_prefix, args.pl_prefix]:
 
-        if variavel == 'sfc':
-            # Download dos arquivos sfc
-            download_params = download_sfc_params.get(args.modelo_fmt, {})
-            if download_params:
-                produto_config_sf.download_files_models(**download_params)
+            if variavel is None:
+                continue
 
-        elif variavel == 'pl':
-            # Download dos arquivos pl
-            download_params = download_pl_params.get(args.modelo_fmt, {})
-            if download_params:
-                produto_config_pl.download_files_models(**download_params)
+            if variavel == 'sfc':
+                # Download dos arquivos sfc
+                download_params = download_sfc_params.get(args.modelo_fmt, {})
+                if download_params:
+                    produto_config_sf.download_files_models(**download_params)
+
+            elif variavel == 'pl':
+                # Download dos arquivos pl
+                download_params = download_pl_params.get(args.modelo_fmt, {})
+                if download_params:
+                    produto_config_pl.download_files_models(**download_params)
+
+            # Executando os produtos
+            if args.produtos:
+                # Executa apenas os selecionados
+                for p in args.produtos:
+                    if p in mapa:
+                        print(f"[INFO] Executando produto específico: {p}")
+                        mapa[p]()
+                    else:
+                        print(f"[WARN] Produto '{p}' não encontrado no mapa.")
+
+            else:
+                # Executa pipeline completo
+                for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
+                    func()
+
+    else:
+
+        produto_config = ConfigProdutosObservado(
+            modelo=args.modelo_fmt,
+            data=args.data,
+        )
+
+        # Configuração do produto
+        produtos = GeraProdutosObservacao(
+            produto_config=produto_config,
+        )
+
+        # dicionário mestre de produtos
+        mapa = map_produtos(produtos)
 
         # Executando os produtos
         if args.produtos:
@@ -537,7 +571,7 @@ def main():
 
         else:
             # Executa pipeline completo
-            for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
+            for func in pipelines(modelo=args.modelo_fmt, produtos=produtos):
                 func()
 
     # Remove arquivos
