@@ -23,9 +23,9 @@ cmd="docker run --rm \
   -e resolucao=$resolucao"
 
 # Só adiciona se existir
-[ -n "$produtos" ] && cmd="$cmd -e produtos=$produtos"
 [ -n "$sfcprefix" ] && cmd="$cmd -e sfcprefix=$sfcprefix"
 [ -n "$plprefix" ] && cmd="$cmd -e plprefix=$plprefix"
+[ -n "$produtos" ] && cmd="$cmd -e produtos=$produtos"
 
 cmd="$cmd produtos"
 
