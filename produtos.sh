@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Argumentos obrigatórios
 modelo=$1
 data=$2
 hora=$3
 resolucao=$4
-
-# Argumentos opcionais
 sfcprefix=$5
 plprefix=$6
-produtos=$7
+shift 6  # remove os 6 primeiros argumentos fixos
+produtos="$@"  # tudo que sobrar vira lista de produtos
 
 cmd="docker run --rm \
   -v /projetos/produtos-meteorologia:/app \
@@ -22,12 +20,10 @@ cmd="docker run --rm \
   -e hora=$hora \
   -e resolucao=$resolucao"
 
-# Só adiciona se existir
 [ -n "$sfcprefix" ] && cmd="$cmd -e sfcprefix=$sfcprefix"
 [ -n "$plprefix" ] && cmd="$cmd -e plprefix=$plprefix"
-[ -n "$produtos" ] && cmd="$cmd -e produtos=$produtos"
+[ -n "$produtos" ] && cmd="$cmd -e produtos=\"$produtos\""
 
 cmd="$cmd produtos"
 
-# Executa
 eval $cmd
