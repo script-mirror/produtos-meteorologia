@@ -11,6 +11,7 @@ services:
       - /home/admin/.env:/root/.env
       - /WX2TB/Documentos:/WX2TB/Documentos
       - /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia
+      - /usr/local/:/usr/local/
     environment:
       - modelo=${modelo}
       - data=${data}
