@@ -472,8 +472,9 @@ def main():
         args.produtos = None
 
     # Corrige caso tenha um único item com espaços
-    if len(args.produtos) == 1 and " " in args.produtos[0]:
-        args.produtos = args.produtos[0].split()
+    if args.produtos is not None:
+        if len(args.produtos) == 1 and " " in args.produtos[0]:
+            args.produtos = args.produtos[0].split()
 
     print(args)
 
