@@ -2,11 +2,11 @@ FROM python:3.11
 
 WORKDIR /app
 
-RUN http://downloads.sourceforge.net/project/opengrads/grads2/2.0.2.oga.1/Linux/grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
-RUN tar -vzxf grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
-RUN cd grads-2.0.2.oga.1
-RUN export PATH=$PATH:$HOME/grads-2.0.2.oga.1/bin
-RUN source ~/.bashrc
+# RUN http://downloads.sourceforge.net/project/opengrads/grads2/2.0.2.oga.1/Linux/grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
+# RUN tar -vzxf grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
+# RUN cd grads-2.0.2.oga.1
+# RUN export PATH=$PATH:$HOME/grads-2.0.2.oga.1/bin
+# RUN source ~/.bashrc
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ffmpeg \
@@ -23,7 +23,6 @@ RUN sed -i 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
 ENV LANG=pt_BR.UTF-8 \
     LC_ALL=pt_BR.UTF-8 \
     TZ=America/Sao_Paulo
-
 
 COPY ./requirements.txt /app/requirements.txt
 
