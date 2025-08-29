@@ -28,8 +28,8 @@ cmd="docker run --rm \
 [ -n "$produtos" ] && cmd="$cmd -e produtos='${produtos}'"
 
 # adiciona entrypoint e finaliza
-cmd="$cmd --entrypoint tail produtos -f /dev/null"
-# cmd="$cmd produtos"
+# cmd="$cmd --entrypoint tail produtos -f /dev/null"
+cmd="$cmd produtos"
 # --entrypoint tail produtos -f /dev/null
 
 eval $cmd
