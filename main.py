@@ -440,144 +440,144 @@ def map_produtos(produtos=None, tipo='forecast'):
 
 def main():
 
-    os.system('opengrads -hb')
+    os.system('/app/tmp/opengrads -hb')
 
-    # dicionário mestre de produtos
-    mapa = map_produtos()
-    produtos_disponiveis = list(mapa.keys())
+    # # dicionário mestre de produtos
+    # mapa = map_produtos()
+    # produtos_disponiveis = list(mapa.keys())
 
-    parser = argparse.ArgumentParser(description="Processa inicialização de modelo meteorológico.")
+    # parser = argparse.ArgumentParser(description="Processa inicialização de modelo meteorológico.")
 
-    # obrigatórios
-    parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
-    parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
+    # # obrigatórios
+    # parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
+    # parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
 
-    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)")
-    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)")
+    # parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)")
+    # parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)")
 
-    # opcionais
-    parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")
-    parser.add_argument("--pl-prefix", default=None, help="Prefixo para pressão em níveis (ex: pl)")
+    # # opcionais
+    # parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")
+    # parser.add_argument("--pl-prefix", default=None, help="Prefixo para pressão em níveis (ex: pl)")
     
-    # NOVO: escolher produtos específicos
-    parser.add_argument("--produtos", nargs="+", help="Produtos disponíveis" + "\n".join(produtos_disponiveis))
+    # # NOVO: escolher produtos específicos
+    # parser.add_argument("--produtos", nargs="+", help="Produtos disponíveis" + "\n".join(produtos_disponiveis))
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
 
-    if args.sfc_prefix in (None, "", "null", "None"):
-        args.sfc_prefix = None
+    # if args.sfc_prefix in (None, "", "null", "None"):
+    #     args.sfc_prefix = None
 
-    if args.pl_prefix in (None, "", "null", "None"):
-        args.pl_prefix = None
+    # if args.pl_prefix in (None, "", "null", "None"):
+    #     args.pl_prefix = None
 
-    if args.produtos in (None, [""], "null", "None"):
-        args.produtos = None
+    # if args.produtos in (None, [""], "null", "None"):
+    #     args.produtos = None
 
-    # Corrige caso tenha um único item com espaços
-    if args.produtos is not None:
-        if len(args.produtos) == 1 and " " in args.produtos[0]:
-            args.produtos = args.produtos[0].split()
+    # # Corrige caso tenha um único item com espaços
+    # if args.produtos is not None:
+    #     if len(args.produtos) == 1 and " " in args.produtos[0]:
+    #         args.produtos = args.produtos[0].split()
 
-    print(args)
+    # print(args)
    
-    modelos_observados = ['merge', 'samet']
+    # modelos_observados = ['merge', 'samet']
 
-    if args.modelo_fmt not in modelos_observados:
+    # if args.modelo_fmt not in modelos_observados:
 
-        # Produtos de sfc
-        produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
-            modelo=args.modelo_fmt,
-            inicializacao=args.inicializacao,
-            data=args.data,
-            resolucao=args.resolucao,
-            name_prefix=args.sfc_prefix if args.sfc_prefix else None
-        )
+    #     # Produtos de sfc
+    #     produto_config_sf = ConfigProdutosPrevisaoCurtoPrazo(
+    #         modelo=args.modelo_fmt,
+    #         inicializacao=args.inicializacao,
+    #         data=args.data,
+    #         resolucao=args.resolucao,
+    #         name_prefix=args.sfc_prefix if args.sfc_prefix else None
+    #     )
 
-        # Produtos de pl
-        produto_config_pl = ConfigProdutosPrevisaoCurtoPrazo(
-            modelo=args.modelo_fmt,
-            inicializacao=args.inicializacao,
-            data=args.data,
-            resolucao=args.resolucao,
-            name_prefix=args.pl_prefix if args.pl_prefix else None
-        )
+    #     # Produtos de pl
+    #     produto_config_pl = ConfigProdutosPrevisaoCurtoPrazo(
+    #         modelo=args.modelo_fmt,
+    #         inicializacao=args.inicializacao,
+    #         data=args.data,
+    #         resolucao=args.resolucao,
+    #         name_prefix=args.pl_prefix if args.pl_prefix else None
+    #     )
 
-        # Configuração do produto
-        produtos = GeraProdutosPrevisao(
-            produto_config_sf=produto_config_sf, 
-            produto_config_pl=produto_config_pl, 
-            tp_params=open_model_params.get(args.modelo_fmt, {}).get('tp_params', {}), 
-            pl_params=open_model_params.get(args.modelo_fmt, {}).get('pl_params', {}), 
-            shapefiles=shapefiles
-        )
+    #     # Configuração do produto
+    #     produtos = GeraProdutosPrevisao(
+    #         produto_config_sf=produto_config_sf, 
+    #         produto_config_pl=produto_config_pl, 
+    #         tp_params=open_model_params.get(args.modelo_fmt, {}).get('tp_params', {}), 
+    #         pl_params=open_model_params.get(args.modelo_fmt, {}).get('pl_params', {}), 
+    #         shapefiles=shapefiles
+    #     )
 
-        # dicionário mestre de produtos
-        mapa = map_produtos(produtos)
+    #     # dicionário mestre de produtos
+    #     mapa = map_produtos(produtos)
 
-        for variavel in [args.sfc_prefix, args.pl_prefix]:
+    #     for variavel in [args.sfc_prefix, args.pl_prefix]:
 
-            if variavel is None:
-                continue
+    #         if variavel is None:
+    #             continue
 
-            if variavel == 'sfc':
-                # Download dos arquivos sfc
-                download_params = download_sfc_params.get(args.modelo_fmt, {})
-                if download_params:
-                    produto_config_sf.download_files_models(**download_params)
+    #         if variavel == 'sfc':
+    #             # Download dos arquivos sfc
+    #             download_params = download_sfc_params.get(args.modelo_fmt, {})
+    #             if download_params:
+    #                 produto_config_sf.download_files_models(**download_params)
 
-            elif variavel == 'pl':
-                # Download dos arquivos pl
-                download_params = download_pl_params.get(args.modelo_fmt, {})
-                if download_params:
-                    produto_config_pl.download_files_models(**download_params)
+    #         elif variavel == 'pl':
+    #             # Download dos arquivos pl
+    #             download_params = download_pl_params.get(args.modelo_fmt, {})
+    #             if download_params:
+    #                 produto_config_pl.download_files_models(**download_params)
 
-            # Executando os produtos
-            if args.produtos:
-                # Executa apenas os selecionados
-                for p in args.produtos:
-                    if p in mapa:
-                        print(f"[INFO] Executando produto específico: {p}")
-                        mapa[p]()
-                    else:
-                        print(f"[WARN] Produto '{p}' não encontrado no mapa.")
+    #         # Executando os produtos
+    #         if args.produtos:
+    #             # Executa apenas os selecionados
+    #             for p in args.produtos:
+    #                 if p in mapa:
+    #                     print(f"[INFO] Executando produto específico: {p}")
+    #                     mapa[p]()
+    #                 else:
+    #                     print(f"[WARN] Produto '{p}' não encontrado no mapa.")
 
-            else:
-                # Executa pipeline completo
-                for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
-                    func()
+    #         else:
+    #             # Executa pipeline completo
+    #             for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
+    #                 func()
 
-    else:
+    # else:
 
-        produto_config = ConfigProdutosObservado(
-            modelo=args.modelo_fmt,
-            data=args.data,
-        )
+    #     produto_config = ConfigProdutosObservado(
+    #         modelo=args.modelo_fmt,
+    #         data=args.data,
+    #     )
 
-        produto_config.download_files()
+    #     produto_config.download_files()
 
-        # Configuração do produto
-        produtos = GeraProdutosObservacao(
-            produto_config=produto_config,
-            shapefiles=shapefiles,
-        )
+    #     # Configuração do produto
+    #     produtos = GeraProdutosObservacao(
+    #         produto_config=produto_config,
+    #         shapefiles=shapefiles,
+    #     )
 
-        # dicionário mestre de produtos
-        mapa = map_produtos(produtos, tipo='observed')
+    #     # dicionário mestre de produtos
+    #     mapa = map_produtos(produtos, tipo='observed')
 
-        # Executando os produtos
-        if args.produtos:
-            # Executa apenas os selecionados
-            for p in args.produtos:
-                if p in mapa:
-                    print(f"[INFO] Executando produto específico: {p}")
-                    mapa[p]()
-                else:
-                    print(f"[WARN] Produto '{p}' não encontrado no mapa.")
+    #     # Executando os produtos
+    #     if args.produtos:
+    #         # Executa apenas os selecionados
+    #         for p in args.produtos:
+    #             if p in mapa:
+    #                 print(f"[INFO] Executando produto específico: {p}")
+    #                 mapa[p]()
+    #             else:
+    #                 print(f"[WARN] Produto '{p}' não encontrado no mapa.")
 
-        else:
-            # Executa pipeline completo
-            for func in pipelines(modelo=args.modelo_fmt, produtos=produtos):
-                func()
+    #     else:
+    #         # Executa pipeline completo
+    #         for func in pipelines(modelo=args.modelo_fmt, produtos=produtos):
+    #             func()
 
     # Remove arquivos
     # produtos.remove_files()
