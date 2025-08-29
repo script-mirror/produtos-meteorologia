@@ -19,7 +19,9 @@ cmd="docker run --rm \
   -e modelo=$modelo \
   -e data=$data \
   -e hora=$hora \
-  -e resolucao=$resolucao"
+  -e resolucao=$resolucao" \
+  --entrypoint tail \
+  produtos -f /dev/null"
 
 [ -n "$sfcprefix" ] && cmd="$cmd -e sfcprefix=$sfcprefix"
 [ -n "$plprefix" ] && cmd="$cmd -e plprefix=$plprefix"
