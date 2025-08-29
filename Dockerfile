@@ -8,7 +8,7 @@ RUN cd grads-2.0.2.oga.1
 RUN export PATH=$PATH:$HOME/grads-2.0.2.oga.1/bin
 RUN export GADDIR=$PATH:$HOME/grads-2.0.2.oga.1/Contents/Resources/SupportData
 RUN export GASCRP=$GADDIR
-RUN source ~/.bashrc
+RUN grads -h || true
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ffmpeg \
