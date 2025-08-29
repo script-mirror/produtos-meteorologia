@@ -2,6 +2,7 @@
 # Contando o tempo de execução
 import time
 import argparse
+import os
 start_time = time.time()
 
 # Importando o módulo principal
@@ -438,6 +439,8 @@ def map_produtos(produtos=None, tipo='forecast'):
 ###################################################################################################################
 
 def main():
+
+    os.system('opengrads -hb')
 
     # dicionário mestre de produtos
     mapa = map_produtos()
