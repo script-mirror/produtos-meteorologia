@@ -1,3 +1,5 @@
+#!/bin/bash
+
 modelo=$1
 data=$2
 hora=$3
@@ -20,9 +22,9 @@ cmd="docker run --rm \
   -e hora=${hora} \
   -e resolucao=${resolucao}"
 
-[ -n "$sfcprefix" ] && cmd="$cmd --sfc-prefix ${sfcprefix}"
-[ -n "$plprefix" ] && cmd="$cmd --pl-prefix ${plprefix}"
-[ -n "$produtos" ] && cmd="$cmd --produtos ${produtos}"
+[ -n "$sfcprefix" ] && cmd="$cmd -e sfcprefix=${sfcprefix}"
+[ -n "$plprefix" ] && cmd="$cmd -e plprefix=${plprefix}"
+[ -n "$produtos" ] && cmd="$cmd -e produtos='${produtos}'"
 
 # adiciona entrypoint e finaliza
 cmd="$cmd produtos"
