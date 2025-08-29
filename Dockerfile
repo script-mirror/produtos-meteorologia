@@ -2,7 +2,7 @@ FROM python:3.11
 
 WORKDIR /app
 
-RUN http://downloads.sourceforge.net/project/opengrads/grads2/2.0.2.oga.1/Linux/grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
+RUN wget http://downloads.sourceforge.net/project/opengrads/grads2/2.0.2.oga.1/Linux/grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
 RUN tar -vzxf grads-2.0.2.oga.1-bundle-x86_64-unknown-linux-gnu.tar.gz
 RUN cd grads-2.0.2.oga.1
 RUN export PATH=$PATH:$HOME/grads-2.0.2.oga.1/bin
