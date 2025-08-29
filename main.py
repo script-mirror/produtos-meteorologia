@@ -440,7 +440,7 @@ def map_produtos(produtos=None, tipo='forecast'):
 
 def main():
 
-    os.system('/app/tmp/opengrads -hb')
+    os.system('/usr/local/grads-2.0.2.oga.2/Contents/opengrads')
 
     # # dicionário mestre de produtos
     # mapa = map_produtos()

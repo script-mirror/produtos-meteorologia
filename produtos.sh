@@ -15,7 +15,7 @@ cmd="docker run --rm \
   -v /home/admin/.env:/root/.env \
   -v /WX2TB/Documentos:/WX2TB/Documentos \
   -v /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia \
-  -v /usr/local/grads-2.0.2.oga.2/Contents/opengrads:/app/tmp/opengrads \
+  -v /usr/local/grads-2.0.2.oga.2/Contents/opengrads:/usr/local/grads-2.0.2.oga.2/Contents/opengrads \
   -e modelo=$modelo \
   -e data=$data \
   -e hora=$hora \
