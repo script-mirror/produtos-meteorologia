@@ -16,6 +16,6 @@ cmd="docker run --rm \
 [ -n "$produtos" ] && cmd="$cmd -e produtos='${produtos}'"
 
 # adiciona entrypoint e finaliza
-cmd="$cmd"
+cmd="$cmd produtos"
 
 eval $cmd
