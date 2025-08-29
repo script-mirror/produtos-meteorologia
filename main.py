@@ -529,6 +529,12 @@ def main():
                 if download_params:
                     produto_config_pl.download_files_models(**download_params)
 
+            else:
+                # Download dos arquivos sfc
+                download_params = download_sfc_params.get(args.modelo_fmt, {})
+                if download_params:
+                    produto_config_sf.download_files_models(**download_params)             
+
             # Executando os produtos
             if args.produtos:
                 # Executa apenas os selecionados
