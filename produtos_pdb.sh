@@ -8,4 +8,4 @@ docker run --rm -dit \
   -e data=$data \
   -e hora=$hora \
   -e resolucao=$resolucao \
-  ubuntu tail -f /dev/null
+  python:3.13-slim tail -f /dev/null
