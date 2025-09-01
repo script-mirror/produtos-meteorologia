@@ -396,7 +396,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "jato200": lambda: produtos.gerar_jato_div200(margin_y=-90),
             "jato200_sop": lambda: produtos.gerar_jato_div200(margin_y=-90, resample_freq='sop'),
             "psi_sop": lambda: produtos.gerar_psi(margin_y=-90, extent=CONSTANTES['extents_mapa']['global'], central_longitude=180, figsize=(17, 17), resample_freq='sop'),
-            "psi_sop": lambda: produtos.gerar_psi(margin_y=-90, extent=CONSTANTES['extents_mapa']['global'], central_longitude=180, figsize=(17, 17)),
+            "psi": lambda: produtos.gerar_psi(margin_y=-90, extent=CONSTANTES['extents_mapa']['global'], central_longitude=180, figsize=(17, 17)),
             "vento850_temp": lambda: produtos.gerar_vento_temp850(margin_y=-90),
             "vento850_temp_sop": lambda: produtos.gerar_vento_temp850(margin_y=-90, resample_freq='sop'),
             "vento850_div": lambda: produtos.gerar_vento_div850(margin_y=-90),
