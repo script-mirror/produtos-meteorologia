@@ -2,7 +2,6 @@
 # Contando o tempo de execução
 import time
 import argparse
-import os
 start_time = time.time()
 
 # Importando o módulo principal
@@ -10,6 +9,7 @@ from middle.meteorologia.processamento.produtos import ConfigProdutosPrevisaoCur
 from middle.meteorologia.processamento.produtos import GeraProdutosPrevisao, GeraProdutosObservacao
 from middle.meteorologia.processamento.pipelines import pipelines
 from middle.meteorologia.consts.constants import CONSTANTES
+from middle.utils import Constants
 
 ###################################################################################################################
 
@@ -435,6 +435,8 @@ def map_produtos(produtos=None, tipo='forecast'):
             "acumulado_mensal": lambda: produtos.gerar_acumulado_mensal(extent=CONSTANTES['extents_mapa']['brasil']),
             "dif_prev": lambda: produtos.gerar_dif_prev(tipo_plot='tp_db'),
             "bacias_smap": lambda: produtos.gerar_bacias_smap(salva_db=False),
+            "temp_diario": lambda: produtos.gerar_temp_diario(extent=CONSTANTES['extents_mapa']['brasil']),
+            "temp_mensal": lambda: produtos.gerar_temp_mensal(extent=CONSTANTES['extents_mapa']['brasil']),
         }
 
 ###################################################################################################################
@@ -451,10 +453,9 @@ def main():
     parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
     parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
 
-    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)")
-    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)")
-
     # opcionais
+    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)", default=None)
+    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)", default=None)
     parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")
     parser.add_argument("--pl-prefix", default=None, help="Prefixo para pressão em níveis (ex: pl)")
     
@@ -553,9 +554,16 @@ def main():
 
     else:
 
+        if args.modelo_fmt == 'merge':
+            output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_MERGE
+            
+        elif args.modelo_fmt == 'samet':
+            output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_SAMET
+
         produto_config = ConfigProdutosObservado(
             modelo=args.modelo_fmt,
             data=args.data,
+            output_path=output_path
         )
 
         produto_config.download_files()
