@@ -464,6 +464,12 @@ def main():
 
     args = parser.parse_args()
 
+    if args.inicializacao in (None, "", "null", "None"):
+        args.inicializacao = None
+
+    if args.resolucao in (None, "", "null", "None"):
+        args.resolucao = None
+
     if args.sfc_prefix in (None, "", "null", "None"):
         args.sfc_prefix = None
 
@@ -472,7 +478,7 @@ def main():
 
     if args.produtos in (None, [""], "null", "None"):
         args.produtos = None
-
+        
     # Corrige caso tenha um único item com espaços
     if args.produtos is not None:
         if len(args.produtos) == 1 and " " in args.produtos[0]:
