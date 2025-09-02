@@ -425,7 +425,8 @@ def map_produtos(produtos=None, tipo='forecast'):
 
             # Outros
             "salva_nc": lambda: produtos.salva_netcdf(variavel='tp'),
-            "geada": lambda: produtos.gerar_geada_inmet(),
+            "geada_inmet": lambda: produtos.gerar_geada_inmet(),
+            "geada_cana": lambda: produtos.gerar_geada_cana(),
         }
 
     elif tipo == 'observed':
@@ -478,7 +479,7 @@ def main():
 
     if args.produtos in (None, [""], "null", "None"):
         args.produtos = None
-        
+
     # Corrige caso tenha um único item com espaços
     if args.produtos is not None:
         if len(args.produtos) == 1 and " " in args.produtos[0]:
