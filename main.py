@@ -552,6 +552,9 @@ def main():
                 for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
                     func()
 
+        # Remove arquivos
+        produtos.remove_files()
+
     else:
 
         if args.modelo_fmt == 'merge':
@@ -591,9 +594,6 @@ def main():
             # Executa pipeline completo
             for func in pipelines(modelo=args.modelo_fmt, produtos=produtos):
                 func()
-
-    # Remove arquivos
-    # produtos.remove_files()
 
 ###################################################################################################################
 
