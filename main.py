@@ -556,8 +556,9 @@ def main():
 
             else:
                 # Executa pipeline completo
-                for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel):
-                    func()
+                for func in pipelines(modelo=args.modelo_fmt, produtos=produtos, tipo=variavel, hora=args.inicializacao):
+                    if func is not None:
+                        func()
 
         # Remove arquivos
         produtos.remove_files()
