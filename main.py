@@ -384,6 +384,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "prec24h_biomassa": lambda: produtos.gerar_prec24h_biomassa(extent=CONSTANTES['extents_mapa']['biomassa']),
             "acum_total": lambda: produtos.gerar_acumulado_total(extent=CONSTANTES['extents_mapa']['brasil']),
             "acum_total_anom_mensal": lambda: produtos.gerar_acumulado_total(extent=CONSTANTES['extents_mapa']['brasil'], anomalia_mensal=True),
+            "prec_pnmm_sop": lambda: produtos.gerar_prec_pnmm(margin_y=-90, resample_freq='sop'),
             "prec_pnmm": lambda: produtos.gerar_prec_pnmm(margin_y=-90),
             "dif_tp": lambda: produtos.gerar_diferenca_tp(extent=CONSTANTES['extents_mapa']['brasil']),
             "dif_tp_all": lambda: produtos.gerar_diferenca_tp(extent=CONSTANTES['extents_mapa']['brasil'], dif_01_15d=True, dif_15_final=True),
