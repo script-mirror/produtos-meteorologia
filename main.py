@@ -452,11 +452,11 @@ def main():
 
     parser = argparse.ArgumentParser(description="Processa inicialização de modelo meteorológico.")
     parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
-    parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
-    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)", default=None)
-    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)", default=None)
-    parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")
-    parser.add_argument("--pl-prefix", default=None, help="Prefixo para pressão em níveis (ex: pl)")
+    parser.add_argument("--data", help="Data no formato YYYY-MM-DD", default='')
+    parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)", default='')
+    parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)", default='')
+    parser.add_argument("--sfc-prefix", default='', help="Prefixo para superfície (ex: sfc)")
+    parser.add_argument("--pl-prefix", default='', help="Prefixo para pressão em níveis (ex: pl)")
     
     # NOVO: escolher produtos específicos
     parser.add_argument("--produtos", nargs="+", help="Produtos disponíveis" + "\n".join(produtos_disponiveis))
