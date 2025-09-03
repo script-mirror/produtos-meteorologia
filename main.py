@@ -1,6 +1,7 @@
 
 # Contando o tempo de execução
 import time
+from datetime import datetime
 import argparse
 start_time = time.time()
 
@@ -450,12 +451,8 @@ def main():
     produtos_disponiveis = list(mapa.keys())
 
     parser = argparse.ArgumentParser(description="Processa inicialização de modelo meteorológico.")
-
-    # obrigatórios
     parser.add_argument("--modelo_fmt", help="Nome do modelo (ex: gfs, ecmwf, merge)")
     parser.add_argument("--data", help="Data no formato YYYY-MM-DD")
-
-    # opcionais
     parser.add_argument("--inicializacao", help="Hora da inicialização (ex: 0, 12)", default=None)
     parser.add_argument("--resolucao", help="Resolução do modelo (ex: 0p50, 1p00)", default=None)
     parser.add_argument("--sfc-prefix", default=None, help="Prefixo para superfície (ex: sfc)")
@@ -466,19 +463,77 @@ def main():
 
     args = parser.parse_args()
 
-    if args.inicializacao in (None, "", "null", "None"):
+    # valores que consideramos "vazios"
+    null_values = (None, "", "null", "None", [""])
+
+    # pega todos os argumentos como dicionário
+    args_dict = vars(args)
+
+    # Modelos observados
+    modelos_observados = ['merge', 'samet']
+
+    # verifica se todos, exceto `modelo_fmt`, estão "vazios"
+    outros_vazios = all(
+        args_dict[k] in null_values
+        for k in args_dict if k != "modelo_fmt"
+    )
+
+    # Caso para rodar automaticamente apenas colocando o nome do modelo
+    if outros_vazios:
+
+        # Selecionando data e hora automaticamente
+        DIA_ATUAL = datetime.now()
+        DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d')
+        HORA = DIA_ATUAL.hour        
+
+        if HORA >= 0 and HORA < 6:
+            inicializacao = '00'
+        elif HORA >= 6 and HORA < 12:
+            inicializacao = '06'
+        elif HORA >= 12 and HORA < 18:
+            inicializacao = '12'
+        else:
+            inicializacao = '18'
+
+        args.data = DIA_ATUAL_FMT
+        args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
+
+        # Resolução dependendo do modelo
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons']:
+            args.resolucao = '0p50'
+
+        elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
+            args.resolucao = '0p25'
+
+        else:
+            args.resolucao = None
+
+        # Prefixos
+        if args.modelo_fmt in ['gfs', 'gefs', 'ecmwf', 'ecmwf-ens', 'ecmwf-aifs', 'ecmwf-aifs-ens']
+            args.sfc_prefix = 'sfc'
+            args.pl_prefix = 'pl'
+
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons']:
+            args.sfc_prefix = 'sfc'
+            args.pl_prefix = None
+
+        else:
+            args.sfc_prefix = None
+            args.pl_prefix = None
+
+    if args.inicializacao in null_values:
         args.inicializacao = None
 
-    if args.resolucao in (None, "", "null", "None"):
+    if args.resolucao in null_values:
         args.resolucao = None
 
-    if args.sfc_prefix in (None, "", "null", "None"):
+    if args.sfc_prefix in null_values:
         args.sfc_prefix = None
 
-    if args.pl_prefix in (None, "", "null", "None"):
+    if args.pl_prefix in null_values:
         args.pl_prefix = None
 
-    if args.produtos in (None, [""], "null", "None"):
+    if args.produtos in null_values:
         args.produtos = None
 
     # Corrige caso tenha um único item com espaços
@@ -488,8 +543,6 @@ def main():
 
     print(args)
    
-    modelos_observados = ['merge', 'samet']
-
     if args.modelo_fmt not in modelos_observados:
 
         # Produtos de sfc
