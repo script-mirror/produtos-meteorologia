@@ -509,7 +509,7 @@ def main():
             args.resolucao = None
 
         # Prefixos
-        if args.modelo_fmt in ['gfs', 'gefs', 'ecmwf', 'ecmwf-ens', 'ecmwf-aifs', 'ecmwf-aifs-ens']
+        if args.modelo_fmt in ['gfs', 'gefs', 'ecmwf', 'ecmwf-ens', 'ecmwf-aifs', 'ecmwf-aifs-ens']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
