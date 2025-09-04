@@ -429,6 +429,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "salva_nc": lambda: produtos.salva_netcdf(variavel='tp'),
             "geada_inmet": lambda: produtos.gerar_geada_inmet(),
             "geada_cana": lambda: produtos.gerar_geada_cana(),
+            "indices_itcz": lambda: produtos.gerar_indices_itcz(),
         }
 
     elif tipo == 'observed':
