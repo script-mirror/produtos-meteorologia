@@ -71,12 +71,15 @@ download_sfc_params = {
     },
 
     'ecmwf-aifs-ens-membros': {
-        'type_ecmwf_opendata': ['cf', 'pf'],
-        'levtype_ecmwf_opendata': 'sfc',
-        'stream_ecmwf_opendata': 'enfo',
-        'steps': [i for i in range(0, 366, 6)],
-        'variables': ['tp'],
-        'model_ecmwf_opendata': 'aifs-ens',
+        # 'type_ecmwf_opendata': ['cf', 'pf'],
+        # 'levtype_ecmwf_opendata': 'sfc',
+        # 'stream_ecmwf_opendata': 'enfo',
+        # 'steps': [i for i in range(0, 366, 6)],
+        # 'variables': ['tp'],
+        # 'model_ecmwf_opendata': 'aifs-ens',
+        'wait_members': True,
+        'modelo_last_member': 'ecmwf-aifs-ens0p25',
+        'last_member_file': 'sfc_ecmwf-aifs-ens_2025090500_360.grib2'
 
     },
 
@@ -512,7 +515,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
