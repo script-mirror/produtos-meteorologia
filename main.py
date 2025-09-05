@@ -338,6 +338,7 @@ open_model_params = {
         'tp_params': {
             'arquivos_membros_diferentes': True,
             'sel_area': True,
+            # 'membros_prefix': True,
         },
 
         'pl_params': {
