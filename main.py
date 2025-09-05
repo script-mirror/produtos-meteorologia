@@ -242,7 +242,7 @@ open_model_params = {
 
         'pl_params': {
             'sel_area': True,
-            # 'expand_isobaric_dims': True,
+            'expand_isobaric_dims': True,
         }
 
     },
