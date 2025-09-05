@@ -33,12 +33,15 @@ download_sfc_params = {
     },
 
     'ecmwf-ens-membros': {
-        'type_ecmwf_opendata': ['cf', 'pf'],
-        'levtype_ecmwf_opendata': 'sfc',
-        'stream_ecmwf_opendata': 'enfo',
-        'steps': [i for i in range(0, 366, 6)],
-        'variables': ['tp'],
-        'provedor_ecmwf_opendata': 'ecmwf'
+        # 'type_ecmwf_opendata': ['cf', 'pf'],
+        # 'levtype_ecmwf_opendata': 'sfc',
+        # 'stream_ecmwf_opendata': 'enfo',
+        # 'steps': [i for i in range(0, 366, 6)],
+        # 'variables': ['tp'],
+        # 'provedor_ecmwf_opendata': 'ecmwf'
+        'wait_members': True,
+        'modelo_last_member': 'ecmwf-ens0p25',
+        'last_member_file': '360.grib2'
     },
 
     'ecmwf': {
@@ -79,7 +82,7 @@ download_sfc_params = {
         # 'model_ecmwf_opendata': 'aifs-ens',
         'wait_members': True,
         'modelo_last_member': 'ecmwf-aifs-ens0p25',
-        'last_member_file': 'sfc_ecmwf-aifs-ens_2025090500_360.grib2'
+        'last_member_file': '360.grib2'
 
     },
 
@@ -221,6 +224,7 @@ open_model_params = {
             'm_to_mm': True,
             'cf_pf_members': True,
             'sel_area': True,
+            'membros_prefix': True,
         },
 
         'pl_params': {
@@ -250,6 +254,23 @@ open_model_params = {
             'm_to_mm': False,
             'cf_pf_members': True,
             'sel_area': True,
+        },
+
+        'pl_params': {
+            'sel_area': True,
+            'expand_isobaric_dims': True,
+        }
+
+    },
+
+    'ecmwf-aifs-ens-membros': {
+
+        'tp_params': {
+            'ajusta_acumulado': True,
+            'm_to_mm': False,
+            'cf_pf_members': True,
+            'sel_area': True,
+            'membros_prefix': True,
         },
 
         'pl_params': {
