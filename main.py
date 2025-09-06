@@ -518,10 +518,14 @@ def main():
 
         elif 'ecmwf' in args.modelo_fmt:
 
-            if HORA >= 0 and HORA < 16:
+            if args.modelo_fmt == 'ecmwf-ens-estendido' or args.modelo_fmt == 'ecmwf-ens-estendido-membros':
                 inicializacao = 0
+
             else:
-                inicializacao = 12
+                if HORA >= 0 and HORA < 16:
+                    inicializacao = 0
+                else:
+                    inicializacao = 12
 
         else:
 
