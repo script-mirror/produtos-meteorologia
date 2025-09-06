@@ -518,21 +518,30 @@ def main():
 
         elif 'ecmwf' in args.modelo_fmt:
 
-            if HORA >= 0 and HORA < 16:
+            if args.modelo_fmt == 'ecmwf-ens-estendido' or args.modelo_fmt == 'ecmwf-ens-estendido-membros':
                 inicializacao = 0
+
             else:
-                inicializacao = 12
+                if HORA >= 0 and HORA < 16:
+                    inicializacao = 0
+                else:
+                    inicializacao = 12
 
         else:
 
-            if HORA >= 0 and HORA < 6:
+            if args.modelo_fmt == 'gefs-membros-estendido' or args.modelo_fmt == 'gefs-estendido':
                 inicializacao = 0
-            elif HORA >= 6 and HORA < 12:
-                inicializacao = 6
-            elif HORA >= 12 and HORA < 18:
-                inicializacao = 12
+
+
             else:
-                inicializacao = 18
+                if HORA >= 0 and HORA < 6:
+                    inicializacao = 0
+                elif HORA >= 6 and HORA < 12:
+                    inicializacao = 6
+                elif HORA >= 12 and HORA < 18:
+                    inicializacao = 12
+                else:
+                    inicializacao = 18
 
         args.data = DIA_ATUAL_FMT
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
