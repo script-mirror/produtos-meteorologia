@@ -564,11 +564,11 @@ def main():
             args.resolucao = None
 
         # Prefixos
-        if args.modelo_fmt in ['gfs', 'gefs', 'ecmwf', 'ecmwf-ens', 'ecmwf-aifs', 'ecmwf-aifs-ens']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'ecmwf', 'ecmwf-ens', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'gefs-estendido']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
