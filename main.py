@@ -92,11 +92,24 @@ download_sfc_params = {
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
     },
 
+    'gefs-wind': {
+        'variables': '&var_UGRD=on&var_VGRD=on'
+        'levels': '&lev_100_m_above_ground=on'
+        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
+    },
+
     'gefs-estendido': {
         'variables': '&var_ULWRF=on&var_APCP=on&var_PRMSL=on',
         'levels': '&lev_top_of_atmosphere=on&lev_surface=on&lev_mean_sea_level=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',       
         'steps': [i for i in range(0, 846, 6)]     
+    },
+
+    'gefs-estendido-wind': {
+        'variables': '&var_UGRD=on&var_VGRD=on',
+        'levels': '&lev_100_m_above_ground=on',
+        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',
+        'steps': [i for i in range(0, 846, 6)]
     },
 
     'gefs-estendido-membros': {
@@ -314,7 +327,33 @@ open_model_params = {
 
     },
 
+    'gefs-wind': {
+
+        'tp_params': {
+            'sel_area': True,
+        },
+
+        'pl_params': {
+            'sel_area': True,
+            'ajusta_longitude': True,
+        }
+
+    },
+
     'gefs-estendido': {
+
+        'tp_params': {
+            'sel_area': True,
+        },
+
+        'pl_params': {
+            'sel_area': True,
+            'ajusta_longitude': True,
+        }
+
+    },
+
+    'gefs-estendido-wind': {
 
         'tp_params': {
             'sel_area': True,
