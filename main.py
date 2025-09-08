@@ -93,8 +93,8 @@ download_sfc_params = {
     },
 
     'gefs-wind': {
-        'variables': '&var_UGRD=on&var_VGRD=on'
-        'levels': '&lev_100_m_above_ground=on'
+        'variables': '&var_UGRD=on&var_VGRD=on',
+        'levels': '&lev_100_m_above_ground=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
     },
 
