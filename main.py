@@ -184,9 +184,9 @@ download_pl_params = {
     'gefs-estendido': {
         'variables': '&var_UGRD=on&var_VGRD=on',
         'levels': '&lev_925_mb=on&lev_850_mb=on',
-        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
+        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',   
+        'steps': [i for i in range(0, 846, 6)]      
     },
-
 
 }
 
