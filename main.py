@@ -181,6 +181,13 @@ download_pl_params = {
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
     },
 
+    'gefs-estendido': {
+        'variables': '&var_UGRD=on&var_VGRD=on',
+        'levels': '&lev_925_mb=on&lev_850_mb=on',
+        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
+    },
+
+
 }
 
 ###################################################################################################################
