@@ -441,10 +441,9 @@ def map_produtos(produtos=None, tipo='forecast'):
 
         return {
             # Probabilidade / Climatologia
-            "prob_clim": lambda: produtos.gerar_probabilidade_climatologia(ensemble=False, anomalia_sop=True),
-            "prob_clim_membros": lambda: produtos.gerar_probabilidade_climatologia(ensemble=False),
-            "prob_limiar": lambda: produtos.gerar_probabilidade_limiar(ensemble=False),
-            "desvpad": lambda: produtos.gerar_desvpad(ensemble=False),
+            "prob_clim": lambda: produtos.gerar_probabilidade_climatologia(ensemble=False, anomalia_sop=True, extent=CONSTANTES['extents_mapa']['brasil']),
+            "prob_limiar": lambda: produtos.gerar_probabilidade_limiar(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
+            "desvpad": lambda: produtos.gerar_desvpad(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
 
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
