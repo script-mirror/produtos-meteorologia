@@ -725,7 +725,7 @@ def main():
             output_path=output_path
         )
 
-        # produto_config.download_files()
+        produto_config.download_files()
 
         # Configuração do produto
         produtos = GeraProdutosObservacao(
