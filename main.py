@@ -508,7 +508,7 @@ def map_produtos(produtos=None, tipo='forecast'):
 
         return {
             "prec24h": lambda: produtos.gerar_prec24h(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
-            "acumulado_mensal": lambda: produtos.gerar_acumulado_mensal(extent=CONSTANTES['extents_mapa']['brasil']),
+            "acumulado_mensal": lambda: produtos.gerar_acumulado_mensal(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "dif_prev": lambda: produtos.gerar_dif_prev(tipo_plot='tp_db'),
             "bacias_smap": lambda: produtos.gerar_bacias_smap(salva_db=False),
             "temp_diario": lambda: produtos.gerar_temp_diario(extent=CONSTANTES['extents_mapa']['brasil']),
