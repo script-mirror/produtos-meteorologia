@@ -689,6 +689,7 @@ def main():
             if variavel == 'sfc':
                 # Download dos arquivos sfc
                 download_params = download_sfc_params.get(args.modelo_fmt, {})
+                print(f"Download params: {download_params}")
                 if download_params:
                     produto_config_sf.download_files_models(**download_params)
 
