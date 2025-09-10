@@ -505,6 +505,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "frentes": lambda: produtos.gerar_frentes_frias(margin_y=-90, anomalia_frentes=True),
             "chuva_geop500_v850": lambda: produtos.gerar_chuva_geop500_vento850(extent=CONSTANTES['extents_mapa']['brasil']),
             "pnmm_vento850": lambda: produtos.gerar_pnmm_vento850(margin_y=-90),
+            "anomalia_vento850": lambda: produtos.gerar_anomalia_vento850(extent=CONSTANTES['extents_mapa']['brasil'], resample_freq='sop', anomalia_mensal=True),
 
             # Vento
             "mag_v100": lambda: produtos.gerar_mag_vento100(extent=CONSTANTES['extents_mapa']['brasil']),
