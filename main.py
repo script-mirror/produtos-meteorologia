@@ -428,12 +428,11 @@ open_model_params = {
             # 'expand_isobaric_dims': True,
             # 'sel_area': False
         }
-    }
+    },
 
     'eta': {
 
         'tp_params': {
-
             'rename_var': True,
             'var_dim': 'tp'
         },
