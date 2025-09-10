@@ -428,7 +428,7 @@ open_model_params = {
             # 'expand_isobaric_dims': True,
             # 'sel_area': False
         }
-    }
+    },
 
     'eta': {
 
