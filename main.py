@@ -142,6 +142,11 @@ download_sfc_params = {
 
     },
 
+    'eta': {
+
+        'days_eta': 11, 
+    }
+
 }
 
 download_pl_params = {
@@ -690,7 +695,6 @@ def main():
                 # Download dos arquivos sfc
                 download_params = download_sfc_params.get(args.modelo_fmt, {})
                 if download_params:
-                    print('oi')
                     produto_config_sf.download_files_models(**download_params)
 
             elif variavel == 'pl':
