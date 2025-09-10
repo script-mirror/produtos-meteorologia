@@ -433,7 +433,6 @@ open_model_params = {
     'eta': {
 
         'tp_params': {
-
             'rename_var': True,
             'var_dim': 'tp'
         },
