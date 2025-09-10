@@ -525,6 +525,7 @@ def map_produtos(produtos=None, tipo='forecast'):
     elif tipo == 'observed':
 
         return {
+            
             "prec24h": lambda: produtos.gerar_prec24h(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "acumulado_mensal": lambda: produtos.gerar_acumulado_mensal(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "dif_prev": lambda: produtos.gerar_dif_prev(tipo_plot='tp_db'),
