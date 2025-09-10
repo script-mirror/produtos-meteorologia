@@ -576,7 +576,7 @@ def main():
         DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d')
         HORA = DIA_ATUAL.hour        
 
-        if args.modelo_fmt == 'pconjunto-ons':
+        if args.modelo_fmt in ['pconjunto-ons', 'eta']:
             inicializacao = 0
 
         elif 'ecmwf' in args.modelo_fmt:
@@ -594,7 +594,6 @@ def main():
 
             if args.modelo_fmt == 'gefs-membros-estendido' or args.modelo_fmt == 'gefs-estendido':
                 inicializacao = 0
-
 
             else:
                 if HORA >= 0 and HORA < 6:
@@ -616,6 +615,9 @@ def main():
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
             args.resolucao = '0p25'
 
+        elif args.modelo_fmt in ['eta']:
+            args.resolucao = '0p40'
+
         else:
             args.resolucao = None
 
@@ -624,7 +626,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
