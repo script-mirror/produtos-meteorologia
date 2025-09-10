@@ -439,7 +439,8 @@ open_model_params = {
 
         'tp_params': {
             'rename_var': True,
-            'var_dim': 'tp'
+            'var_dim': 'tp',
+            'm_to_mm': True,
         },
 
         'pl_params': {
