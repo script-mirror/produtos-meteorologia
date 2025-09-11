@@ -364,11 +364,13 @@ open_model_params = {
 
         'tp_params': {
             'sel_area': True,
+            'arquivos_membros_diferentes': True,
         },
 
         'pl_params': {
             'sel_area': True,
             'ajusta_longitude': True,
+            'arquivos_membros_diferentes': True,
         }
 
     },
@@ -733,7 +735,7 @@ def main():
                         func()
 
         # Remove arquivos
-        # produtos.remove_files()
+        produtos.remove_files()
 
     else:
 
