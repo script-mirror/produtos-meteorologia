@@ -525,6 +525,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "geada_inmet": lambda: produtos.gerar_geada_inmet(),
             "geada_cana": lambda: produtos.gerar_geada_cana(),
             "indices_itcz": lambda: produtos.gerar_indices_itcz(),
+            "vento_weol": lambda: produtos.gerar_vento_weol(),
         }
 
     elif tipo == 'observed':
@@ -735,7 +736,7 @@ def main():
                         func()
 
         # Remove arquivos
-        produtos.remove_files()
+        # produtos.remove_files()
 
     else:
 
