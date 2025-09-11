@@ -617,7 +617,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
@@ -634,7 +634,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
