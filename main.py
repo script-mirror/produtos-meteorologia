@@ -568,7 +568,7 @@ def main():
     args_dict = vars(args)
 
     # Modelos observados
-    modelos_observados = ['merge', 'samet']
+    modelos_observados = ['merge', 'samet', 'cpc']
 
     # verifica se todos, exceto `modelo_fmt`, estão "vazios"
     outros_vazios = all(
@@ -742,7 +742,10 @@ def main():
 
         if args.modelo_fmt == 'merge':
             output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_MERGE
-            
+
+        elif args.modelo_fmt == 'cpc':
+            output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_CPC
+
         elif args.modelo_fmt == 'samet':
             output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_SAMET
 
