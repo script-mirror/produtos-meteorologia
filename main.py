@@ -600,7 +600,7 @@ def main():
 
         else:
 
-            if args.modelo_fmt == 'gefs-membros-estendido' or args.modelo_fmt == 'gefs-estendido':
+            if args.modelo_fmt == 'gefs-membros-estendido' or args.modelo_fmt == 'gefs-estendido' or args.modelo_fmt == 'gefs-estendido-wind':
                 inicializacao = 0
 
             else:
