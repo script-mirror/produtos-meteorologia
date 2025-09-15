@@ -636,6 +636,16 @@ def main():
             if args.modelo_fmt == 'gefs-membros-estendido' or args.modelo_fmt == 'gefs-estendido' or args.modelo_fmt == 'gefs-estendido-wind':
                 inicializacao = 0
 
+            elif args.modelo_fmt == 'cfsv2' or args.modelo_fmt == 'cfsv2-mensal':
+                if HORA >= 0 and HORA < 7:
+                    inicializacao = 0
+                elif HORA >= 7 and HORA < 13:
+                    inicializacao = 6
+                elif HORA >= 13 and HORA < 19:
+                    inicializacao = 12
+                else:
+                    inicializacao = 18
+               
             else:
                 if HORA >= 0 and HORA < 6:
                     inicializacao = 0
@@ -650,7 +660,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
@@ -667,7 +677,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
