@@ -145,7 +145,7 @@ download_sfc_params = {
     'eta': {
 
         'days_eta': 11, 
-    }
+    },
 
     'cfsv2': {
         'variables': ['prate'],
@@ -454,7 +454,7 @@ open_model_params = {
         'pl_params': {
 
         }
-    }
+    },
 
     'cfsv2': {
 
