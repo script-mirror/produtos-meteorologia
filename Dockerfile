@@ -11,8 +11,11 @@ WORKDIR /app
 # RUN grads -h || true
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        openjpeg2-tools openjpeg2-devel openjpeg2 \
-        jasper-devel jasper-libs \
+        openjpeg2-tools \
+        openjpeg2-devel \
+        openjpeg2 \
+        jasper-devel \
+        jasper-libs \
         ffmpeg \
         tzdata \
         xvfb \
