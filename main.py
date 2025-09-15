@@ -119,7 +119,7 @@ download_sfc_params = {
         'steps': [i for i in range(0, 846, 6)]     
     },
 
-    'gfs': {
+    'gfs': {    
         'variables': '&var_ULWRF=on&var_APCP=on&var_PRMSL=on&var_TMP=on&var_UGRD=on&var_VGRD=on',
         'levels': '&lev_top_of_atmosphere=on&lev_surface=on&lev_mean_sea_level=on&lev_2_m_above_ground=on&lev_100_m_above_ground=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60', 
@@ -148,7 +148,11 @@ download_sfc_params = {
     },
 
     'cfsv2': {
-        'variables': ['prate'],
+        'variables': ['prate', 'psi200', 'psi850', 'ocnsst'],
+    },
+
+    'cfsv2-mensal': {
+        'variables': ['flxf', 'ocnf'],
     }
 
 }
@@ -457,6 +461,18 @@ open_model_params = {
     },
 
     'cfsv2': {
+
+        'tp_params': {
+            'rename_var': True,
+            'var_dim': 'tp',
+        },
+
+        'pl_params': {
+
+        }
+    },
+
+    'cfsv2-mensal': {
 
         'tp_params': {
             'rename_var': True,
