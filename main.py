@@ -753,7 +753,7 @@ def main():
                         func()
 
         # Remove arquivos
-        produtos.remove_files()
+        # produtos.remove_files()
 
     else:
 
