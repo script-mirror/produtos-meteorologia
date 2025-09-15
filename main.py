@@ -463,8 +463,8 @@ open_model_params = {
     'cfsv2': {
 
         'tp_params': {
-            'rename_var': True,
-            'var_dim': 'tp',
+            # 'rename_var': True,
+            # 'var_dim': 'tp',
         },
 
         'pl_params': {
