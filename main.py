@@ -147,6 +147,10 @@ download_sfc_params = {
         'days_eta': 11, 
     }
 
+    'cfsv2': {
+        'variables': ['prate'],
+    }
+
 }
 
 download_pl_params = {
@@ -450,6 +454,19 @@ open_model_params = {
         'pl_params': {
 
         }
+    }
+
+    'cfsv2': {
+
+        'tp_params': {
+            'rename_var': True,
+            'var_dim': 'tp',
+        },
+
+        'pl_params': {
+
+        }
+
     }
 
 }

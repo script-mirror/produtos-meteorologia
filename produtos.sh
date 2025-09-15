@@ -9,7 +9,8 @@ plprefix=$6
 shift 6  # remove os 6 primeiros argumentos fixos
 produtos="$@"  # tudo que sobrar vira lista de produtos
 
-cmd="docker run --rm \
+container_name="${modelo}${data}${hora}_$(date +%s)"
+cmd="docker run --rm --name $container_name \
   -v /projetos/produtos-meteorologia:/app \
   -v /projetos/produtos-meteorologia/tmp:/app/tmp \
   -v /home/admin/.env:/root/.env \
