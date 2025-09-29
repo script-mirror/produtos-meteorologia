@@ -117,7 +117,7 @@ download_sfc_params = {
         'levels': '&lev_surface=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',       
         'steps': [i for i in range(0, 846, 6)],
-        'file_size': 100,   
+        'file_size': 0,   
     },
 
     'gfs': {    
