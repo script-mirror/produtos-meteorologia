@@ -112,7 +112,7 @@ download_sfc_params = {
         'steps': [i for i in range(0, 846, 6)]
     },
 
-    'gefs-estendido-membros': {
+    'gefs-membros-estendido': {
         'variables': '&var_APCP=on',
         'levels': '&lev_surface=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',       
@@ -383,7 +383,7 @@ open_model_params = {
 
     },
 
-    'gefs-estendido-membros': {
+    'gefs-membros-estendido': {
 
         'tp_params': {
             'sel_area': True,
