@@ -153,7 +153,7 @@ download_sfc_params = {
     },
 
     'cfsv2-mensal': {
-        'variables': ['flxf', 'ocnf'],
+        'variables': ['flxf', 'pgbf', 'ocnf'],
     }
 
 }
@@ -464,8 +464,7 @@ open_model_params = {
     'cfsv2': {
 
         'tp_params': {
-            # 'rename_var': True,
-            # 'var_dim': 'tp',
+
         },
 
         'pl_params': {
@@ -476,8 +475,7 @@ open_model_params = {
     'cfsv2-mensal': {
 
         'tp_params': {
-            'rename_var': True,
-            'var_dim': 'tp',
+
         },
 
         'pl_params': {
