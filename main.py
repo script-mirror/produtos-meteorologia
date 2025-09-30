@@ -507,6 +507,8 @@ def map_produtos(produtos=None, tipo='forecast'):
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "prec_db": lambda: produtos.gerar_prec_db(plot_semana=True, acumulado_total=True, prec_24h=True),
             "semanas_op_anom_sop": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, anomalia_sop=True),
+            "semanas_op_anom_sop_cfsv2_12rod": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, periods_cfs=12, anomalia_sop=True),
+            "semanas_op_anom_sop_cfsv2_28rod": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, periods_cfs=28, anomalia_sop=True),
             "semanas_op_membros": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=False, ensemble=False),
             "media_bacia": lambda: produtos.gerar_media_bacia_smap(plot_graf=True, ensemble=True, salva_db=False),
             "media_bacia_membros": lambda: produtos.gerar_media_bacia_smap(plot_graf=False, ensemble=False, salva_db=False),
