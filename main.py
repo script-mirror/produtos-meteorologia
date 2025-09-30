@@ -647,9 +647,9 @@ def main():
             elif args.modelo_fmt == 'cfsv2' or args.modelo_fmt == 'cfsv2-mensal':
                 if HORA >= 0 and HORA < 7:
                     inicializacao = 0
-                elif HORA >= 7 and HORA < 13:
+                elif HORA >= 7 and HORA < 15:
                     inicializacao = 6
-                elif HORA >= 13 and HORA < 19:
+                elif HORA >= 15 and HORA < 19:
                     inicializacao = 12
                 else:
                     inicializacao = 18
