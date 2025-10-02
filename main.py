@@ -353,7 +353,8 @@ open_model_params = {
 
         'tp_params': {
             'sel_area': True,
-            # 'engine': 'netcdf4',
+            'rename_var': True,
+            'var_dim': 'tp',
         },
 
         'pl_params': {
