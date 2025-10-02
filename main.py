@@ -677,7 +677,7 @@ def main():
                     inicializacao = 18
 
             elif args.modelo_fmt == 'cmc-ens':
-                if HORA >= 0 and HORA < 12:
+                if HORA >= 0 and HORA < 15:
                     inicializacao = 0
                 else:
                     inicializacao = 12
