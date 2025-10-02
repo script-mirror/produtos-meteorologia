@@ -92,6 +92,12 @@ download_sfc_params = {
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
     },
 
+    'cmc-ens': {
+        'variables': '&var_APCP=on',
+        'levels': '&lev_surface=on',
+        'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
+    },
+
     'gefs-wind': {
         'variables': '&var_UGRD=on&var_VGRD=on',
         'levels': '&lev_100_m_above_ground=on',
@@ -329,6 +335,19 @@ open_model_params = {
     },
 
     'gefs': {
+
+        'tp_params': {
+            'sel_area': True,
+        },
+
+        'pl_params': {
+            'sel_area': True,
+            'ajusta_longitude': True,
+        }
+
+    },
+
+    'cmc-ens': {
 
         'tp_params': {
             'sel_area': True,
