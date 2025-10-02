@@ -12,7 +12,6 @@ services:
       - /WX2TB/Documentos:/WX2TB/Documentos
       - /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia
       - /usr/local/:/usr/local/
-      - /usr/local/bin/cdo:/usr/local/bin/cdo
     environment:
       - modelo=${modelo}
       - data=${data}
