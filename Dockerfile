@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libjpeg62-turbo-dev:amd64 \
         ffmpeg \
         tzdata \
+        cdo \
         xvfb \
         locales \
     && ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime \
