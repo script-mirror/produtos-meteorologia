@@ -19,6 +19,7 @@ cmd="docker run --rm --name $container_name \
   -v /ftp/files_sftp/ECMWF:/ftp/files_sftp/ECMWF \
   -v /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia \
   -v /usr/local/grads-2.0.2.oga.2:/usr/local/grads-2.0.2.oga.2 \
+  -v /usr/local/bin/cdo:/usr/local/bin/cdo \
   -e modelo=${modelo} \
   -e data=${data} \
   -e hora=${hora} \
