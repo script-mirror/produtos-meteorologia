@@ -5,6 +5,7 @@ docker run --rm -dit \
   -v /WX2TB/Documentos:/WX2TB/Documentos \
   -v /projetos/arquivos/meteorologia:/projetos/arquivos/meteorologia \
   -v /usr/local/bin/cdo:/usr/local/bin/cdo \
+  -v /usr/local/:/usr/local/ \
   -e modelo=$modelo \
   -e data=$data \
   -e hora=$hora \
