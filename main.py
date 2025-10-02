@@ -97,7 +97,7 @@ download_sfc_params = {
         'levels': '&lev_surface=on',
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60',        
         'file_size': 0,   
-        'convert_nc': True,
+        # 'convert_nc': True,
     },
 
     'gefs-wind': {
