@@ -15,8 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libmjpegutils-2.1-0 \
         libjpeg62-turbo:amd64 \
         libjpeg62-turbo-dev:amd64 \
-        libnetcdf-dev \
-        cdo \
         ffmpeg \
         tzdata \
         xvfb \
