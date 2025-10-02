@@ -713,7 +713,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal', 'cmc-ens']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
