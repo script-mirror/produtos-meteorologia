@@ -657,6 +657,7 @@ def main():
             else:
                 if HORA >= 0 and HORA < 16:
                     inicializacao = 0
+                    
                 else:
                     inicializacao = 12
 
@@ -674,7 +675,13 @@ def main():
                     inicializacao = 12
                 else:
                     inicializacao = 18
-               
+
+            elif args.modelo_fmt == 'cmc-ens':
+                if HORA >= 0 and HORA < 12:
+                    inicializacao = 0
+                else:
+                    inicializacao = 12
+
             else:
                 if HORA >= 0 and HORA < 6:
                     inicializacao = 0
@@ -689,7 +696,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal', 'cmc-ens']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
