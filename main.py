@@ -359,8 +359,9 @@ open_model_params = {
 
         'tp_params': {
             'sel_area': True,
-            # 'rename_var': True,
-            # 'var_dim': 'tp',
+            'engine': 'netcdf4',
+            'add_valid_time': True,
+
         },
 
         'pl_params': {
@@ -548,8 +549,8 @@ def map_produtos(produtos=None, tipo='forecast'):
             "semanas_op_anom_sop_cfsv2_12rod": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, periods_cfs=12, anomalia_sop=True),
             "semanas_op_anom_sop_cfsv2_28rod": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, periods_cfs=28, anomalia_sop=True),
             "semanas_op_membros": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=False, ensemble=False),
-            "media_bacia": lambda: produtos.gerar_media_bacia_smap(plot_graf=True, ensemble=True, salva_db=False),
-            "media_bacia_membros": lambda: produtos.gerar_media_bacia_smap(plot_graf=False, ensemble=False, salva_db=False),
+            "media_bacia": lambda: produtos.gerar_media_bacia_smap(plot_graf=True, ensemble=True, salva_db=True),
+            "media_bacia_membros": lambda: produtos.gerar_media_bacia_smap(plot_graf=False, ensemble=False, salva_db=True),
 
             # Chuva / Temperatura
             "prec24h": lambda: produtos.gerar_prec24h(extent=CONSTANTES['extents_mapa']['brasil']),
