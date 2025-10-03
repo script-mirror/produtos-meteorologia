@@ -94,6 +94,7 @@ download_sfc_params = {
 
     'gefs-bc': {
         'steps': [i for i in range(6, 390, 6)],
+        'convert_nc': True
           
     },
 
@@ -358,6 +359,8 @@ open_model_params = {
 
         'tp_params': {
             'sel_area': True,
+            # 'rename_var': True,
+            # 'var_dim': 'tp',
         },
 
         'pl_params': {
