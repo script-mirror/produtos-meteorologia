@@ -140,6 +140,10 @@ download_sfc_params = {
         'sub_region_as_gribfilter': '&subregion=&toplat=20&leftlon=240&rightlon=360&bottomlat=-60', 
     },
 
+    'aigfs': {    
+        
+    },
+
     'gefs-membros': {
         'variables': '&var_APCP=on',
         'levels': '&lev_surface=on',
@@ -330,6 +334,19 @@ open_model_params = {
     },
 
     'gfs': {
+
+        'tp_params': {
+            'sel_area': True,
+        },
+
+        'pl_params': {
+            'sel_area': True,
+            'ajusta_longitude': True
+        }
+
+    },
+
+    'aigfs': {
 
         'tp_params': {
             'sel_area': True,
