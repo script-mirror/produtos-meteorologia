@@ -141,7 +141,7 @@ download_sfc_params = {
     },
 
     'aigfs': {    
-        
+        'file_size': 0,  # Tamanho mínimo do arquivo para considerar que o download foi bem-sucedido   
     },
 
     'gefs-membros': {
