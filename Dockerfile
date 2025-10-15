@@ -42,7 +42,6 @@ RUN git config --global credential.helper store && \
     echo "https://${GIT_USERNAME}:${GIT_TOKEN}@github.com" > ~/.git-credentials
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --upgrade --force-reinstall git+https://github.com/wx-middle/libs-middle.git
 
 COPY . /app
 
