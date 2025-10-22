@@ -778,10 +778,35 @@ def main():
     if args.produtos in null_values:
         args.produtos = None
 
-    # Corrige caso tenha um único item com espaços
+    # Corrige caso tenha um único item com espaços ou formato de lista com colchetes
     if args.produtos is not None:
-        if len(args.produtos) == 1 and " " in args.produtos[0]:
-            args.produtos = args.produtos[0].split()
+
+        if isinstance(args.produtos, list):
+            # Verifica se é uma lista passada como string com colchetes (ex: "['item1', 'item2']" ou "['item1']")
+            if len(args.produtos) == 1 and args.produtos[0].startswith('[') and args.produtos[0].endswith(']'):
+                lista_str = args.produtos[0][1:-1]  # Remove [ e ]
+                
+                # Verifica se contém aspas (formato lista Python) ou apenas vírgulas
+                if "'" in lista_str or '"' in lista_str:
+                    # Remove aspas simples e duplas, depois divide por vírgulas
+                    lista_str = lista_str.replace("'", "").replace('"', "")
+                    args.produtos = [item.strip() for item in lista_str.split(',') if item.strip()]
+                else:
+                    # Apenas vírgulas, sem aspas
+                    args.produtos = [item.strip() for item in lista_str.split(',') if item.strip()]
+            
+            elif len(args.produtos) == 1 and " " in args.produtos[0]:
+                # Caso original: espaços
+                args.produtos = args.produtos[0].split()
+            
+            # Processa cada item para remover vírgulas extras se houver
+            produtos_limpos = []
+            for produto in args.produtos:
+                # Remove vírgulas no final e espaços
+                produto = produto.rstrip(',').strip()
+                if produto:
+                    produtos_limpos.append(produto)
+            args.produtos = produtos_limpos
 
     print(args)
    
