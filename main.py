@@ -607,7 +607,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "olr": lambda: produtos.gerar_olr(margin_y=-90),
             "olr_sop": lambda: produtos.gerar_olr(margin_y=-90, resample_freq='sop'),
             "frentes": lambda: produtos.gerar_frentes_frias(margin_y=-90, anomalia_frentes=True),
-            "chuva_geop500_v850": lambda: produtos.gerar_chuva_geop500_vento850(extent=CONSTANTES['extents_mapa']['brasil']),
+            "chuva_geop500_v850": lambda: produtos.gerar_chuva_geop500_vento850(),
             "pnmm_vento850": lambda: produtos.gerar_pnmm_vento850(margin_y=-90),
             "anomalia_vento850": lambda: produtos.gerar_anomalia_vento850(extent=CONSTANTES['extents_mapa']['brasil'], resample_freq='sop', anomalia_mensal=True),
             "sst_cfsv2_12rod": lambda: produtos.gerar_ocnsst_cfsv2(periods_cfs=12, resample_freq='sop', anomalia_sop=True, extent=CONSTANTES['extents_mapa']['global']),
