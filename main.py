@@ -564,6 +564,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "prob_limiar": lambda: produtos.gerar_probabilidade_limiar(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
             "desvpad": lambda: produtos.gerar_desvpad(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
             "prec_quantil": lambda: produtos.gerar_prec_quantil(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
+            "prec_iqr": lambda: produtos.gerar_chuva_iqr(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
 
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
@@ -883,8 +884,8 @@ def main():
                         func()
 
         # Remove arquivos
-        if args.modelo_fmt not in ['cfsv2', 'cfsv2-mensal']:
-            produtos.remove_files()
+        # if args.modelo_fmt not in ['cfsv2', 'cfsv2-mensal']:
+        #    produtos.remove_files()
 
     else:
 
