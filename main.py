@@ -563,6 +563,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "prob_clim_cfsv2_28rod": lambda: produtos.gerar_probabilidade_climatologia(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True, periods_cfs=28, ensemble=False),
             "prob_limiar": lambda: produtos.gerar_probabilidade_limiar(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
             "desvpad": lambda: produtos.gerar_desvpad(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
+            "prec_quantil": lambda: produtos.gerar_prec_quantil(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
 
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
