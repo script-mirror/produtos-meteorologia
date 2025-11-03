@@ -3,6 +3,7 @@
 import time
 from datetime import datetime
 import argparse
+import pandas as pd
 start_time = time.time()
 
 # Importando o módulo principal
@@ -897,6 +898,9 @@ def main():
 
         elif args.modelo_fmt == 'samet':
             output_path = Constants().PATH_DOWNLOAD_ARQUIVOS_SAMET
+
+        if args.modelo_fmt in ['cpc']:
+            args.data = pd.to_datetime(args.data) - pd.Timedelta(days=1)
 
         produto_config = ConfigProdutosObservado(
             modelo=args.modelo_fmt,
