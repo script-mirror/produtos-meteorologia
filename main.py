@@ -584,6 +584,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "acum_total_anom_mensal": lambda: produtos.gerar_acumulado_total(extent=CONSTANTES['extents_mapa']['brasil'], anomalia_mensal=True, add_valor_bacias=True),
             "prec_pnmm_sop": lambda: produtos.gerar_prec_pnmm(margin_y=-90, resample_freq='sop'),
             "prec_pnmm": lambda: produtos.gerar_prec_pnmm(margin_y=-90),
+            "pos_asas": lambda: produtos.gerar_posicionamento_asas(margin_y=-90),
             "dif_tp": lambda: produtos.gerar_diferenca_tp(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "dif_tp_all": lambda: produtos.gerar_diferenca_tp(extent=CONSTANTES['extents_mapa']['brasil'], dif_01_15d=True, dif_15_final=True, add_valor_bacias=True),
 
