@@ -150,7 +150,8 @@ download_sfc_params = {
     },
 
     'hgefs': {    
-        'file_size': 0,  # Tamanho mínimo do arquivo para considerar que o download foi bem-sucedido   
+        'file_size': 0,  # Tamanho mínimo do arquivo para considerar que o download foi bem-sucedido  
+        'steps': [i for i in range(0, 246, 6)], 
     },
 
     'gefs-membros': {
