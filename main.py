@@ -571,7 +571,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "desvpad": lambda: produtos.gerar_desvpad(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil']),
             "prec_quantil": lambda: produtos.gerar_prec_quantil(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "prec_iqr": lambda: produtos.gerar_chuva_iqr(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
-            "acum_total_anom_mensal_quantil": lambda: produtos.gerar_acumulado_total(extent=CONSTANTES['extents_mapa']['brasil'], anomalia_mensal=True, add_valor_bacias=True, ensemble=False),
+            "acum_total_anom_mensal_quantil": lambda: produtos.gerar_chuva_quantil_mensal(extent=CONSTANTES['extents_mapa']['brasil'], anomalia_mensal=True, add_valor_bacias=True, ensemble=False),
 
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
