@@ -589,6 +589,7 @@ def map_produtos(produtos=None, tipo='forecast'):
             "anom_mensal_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_mensal(),
             "anom_sazonal_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_sazonal(),
             "probabilidade_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_probabilidade(),
+            "indices_sst_climatico": lambda: produtos.gerar_produtos_indices_sst_previsoes(),
 
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
