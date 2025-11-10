@@ -182,6 +182,18 @@ download_sfc_params = {
 
     'cfsv2-mensal': {
         'variables': ['flxf', 'pgbf', 'ocnf'],
+    },
+
+    'nmme': {
+        'modelos_nmme': [
+            'NMME',
+            'CFSv2',
+            'CanESM5',
+            'GEM5.2_NEMO',
+            'NASA_GEOS5v2',
+            'NCAR_CCSM4',
+            'NCAR_CESM1',
+        ]
     }
 
 }
