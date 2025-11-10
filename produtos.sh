@@ -14,6 +14,7 @@ cmd="docker run --rm --name $container_name \
   -v /projetos/produtos-meteorologia:/app \
   -v /projetos/produtos-meteorologia/tmp:/app/tmp \
   -v /home/admin/.env:/root/.env \
+  -v /home/admin/.cdsapirc:/root/.cdsapirc \
   -v /WX2TB/Documentos:/WX2TB/Documentos \
   -v /WX4TB/Documentos:/WX4TB/Documentos \
   -v /ftp/files_sftp/ECMWF:/ftp/files_sftp/ECMWF \
