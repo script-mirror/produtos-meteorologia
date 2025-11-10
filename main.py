@@ -573,6 +573,11 @@ def map_produtos(produtos=None, tipo='forecast'):
             "prec_iqr": lambda: produtos.gerar_chuva_iqr(ensemble=False, extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "acum_total_anom_mensal_quantil": lambda: produtos.gerar_chuva_quantil_mensal(extent=CONSTANTES['extents_mapa']['brasil'], anomalia_mensal=True, add_valor_bacias=True, ensemble=False),
 
+            # Mensal/Sazonal
+            "anom_mensal_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_mensal(),
+            "anom_sazonal_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_sazonal(),
+            "probabilidade_climatico": lambda: produtos.gerar_produtos_modelos_climaticos_probabilidade(),
+
             # Semanas / Médias
             "semanas_op": lambda: produtos.gerar_semanas_operativas(extent=CONSTANTES['extents_mapa']['brasil'], add_valor_bacias=True),
             "prec_db": lambda: produtos.gerar_prec_db(plot_semana=True, acumulado_total=True, prec_24h=True),
@@ -697,10 +702,10 @@ def main():
 
         # Selecionando data e hora automaticamente
         DIA_ATUAL = datetime.now()
-        DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d')
+        DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d') if args.modelo_fmt not in ['nmme', 'c3s'] else DIA_ATUAL.strftime(f'%Y-%m-01')
         HORA = DIA_ATUAL.hour        
 
-        if args.modelo_fmt in ['pconjunto-ons', 'eta']:
+        if args.modelo_fmt in ['pconjunto-ons', 'eta', 'nmme']:
             inicializacao = 0
 
         elif 'ecmwf' in args.modelo_fmt:
@@ -750,7 +755,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
@@ -767,7 +772,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
@@ -950,4 +955,3 @@ if __name__ == "__main__":
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"Tempo de execução: {execution_time/60} minutos")
-
