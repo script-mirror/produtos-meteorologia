@@ -19,3 +19,4 @@ dask
 ecmwf-opendata
 pdf2image
 wget
+cdsapi
