@@ -208,7 +208,21 @@ download_sfc_params = {
             'eccc': '5',
             'bom': '2'
         }
-    }
+    },
+
+    'ecmwf-mensal': {
+        'modelos_c3s': {
+            'ecmwf': '51',
+            'ukmo': '604',
+            'meteo_france': '9',
+            'dwd': '22',
+            'cmcc': '4',
+            'ncep': '2',
+            'jma': '3',
+            'eccc': '5',
+            'bom': '2'
+        }
+    } # Não precisa, mas n pode ficar vazio
 
 }
 
@@ -729,7 +743,7 @@ def main():
 
         # Selecionando data e hora automaticamente
         DIA_ATUAL = datetime.now()
-        DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d') if args.modelo_fmt not in ['nmme', 'c3s'] else DIA_ATUAL.strftime(f'%Y-%m-01')
+        DIA_ATUAL_FMT = DIA_ATUAL.strftime(f'%Y-%m-%d') if args.modelo_fmt not in ['nmme', 'c3s', 'ecmwf-mensal'] else DIA_ATUAL.strftime(f'%Y-%m-01')
         HORA = DIA_ATUAL.hour        
 
         if args.modelo_fmt in ['pconjunto-ons', 'eta', 'nmme', 'c3s']:
@@ -782,7 +796,7 @@ def main():
         args.inicializacao = inicializacao if args.modelo_fmt not in modelos_observados else None
 
         # Resolução dependendo do modelo
-        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme', 'c3s']:
+        if args.modelo_fmt in ['gfs', 'gefs', 'gefs-wind', 'gefs-estendido-wind', 'gefs-membros', 'gefs-membros-estendido', 'gefs-estendido', 'pconjunto-ons', 'gefs-membros-estendido', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme', 'c3s', 'ecmwf-mensal']:
             args.resolucao = '0p50'
 
         elif args.modelo_fmt in ['ecmwf', 'ecmwf-ens', 'ecmwf-ens-membros', 'ecmwf-aifs', 'ecmwf-aifs-ens', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros']:
@@ -799,7 +813,7 @@ def main():
             args.sfc_prefix = 'sfc'
             args.pl_prefix = 'pl'
 
-        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme', 'c3s']:
+        elif args.modelo_fmt in ['gefs-membros', 'gefs-membros-estendido', 'ecmwf-ens-membros', 'ecmwf-aifs-ens-membros', 'ecmwf-ens-estendido', 'ecmwf-ens-estendido-membros', 'pconjunto-ons', 'eta', 'gefs-wind', 'gefs-estendido-wind', 'cfsv2', 'cfsv2-mensal', 'cmc-ens', 'gefs-bc', 'aigfs', 'aigefs', 'hgefs', 'nmme', 'c3s', 'ecmwf-mensal']:
             args.sfc_prefix = 'sfc'
             args.pl_prefix = None
 
