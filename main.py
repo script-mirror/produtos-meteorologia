@@ -940,7 +940,7 @@ def main():
                         func()
 
         # Remove arquivos
-        if args.modelo_fmt not in ['cfsv2', 'cfsv2-mensal']:
+        if args.modelo_fmt not in ['cfsv2', 'cfsv2-mensal', 'nmme', 'c3s']:
            produtos.remove_files()
 
     else:
